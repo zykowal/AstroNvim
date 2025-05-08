@@ -5,5 +5,6 @@ return {
   { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+  { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
+  { import = "astrocommunity.recipes.disable-tabline" },
 }
