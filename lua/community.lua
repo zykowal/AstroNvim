@@ -10,4 +10,5 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.editing-support.neogen" },
+  { import = "astrocommunity.search.grug-far-nvim" },
 }
