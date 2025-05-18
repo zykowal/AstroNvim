@@ -7,4 +7,5 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
   { import = "astrocommunity.recipes.disable-tabline" },
+  { import = "astrocommunity.search.grug-far-nvim" },
 }
