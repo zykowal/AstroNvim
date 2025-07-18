@@ -5,10 +5,12 @@ return {
   { import = "astrocommunity.quickfix.nvim-bqf" },
   { import = "astrocommunity.recipes.vscode-icons" },
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.search.grug-far-nvim" },
+  { import = "astrocommunity.pack.golangci-lint" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.pack.rust" },
 }

@@ -2,6 +2,8 @@ return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
     opts.winbar = nil
+    local conditions = require "heirline.conditions"
+    local utils = require "heirline.utils"
     local status = require "astroui.status"
     local ViMode = {
       -- get vim current mode, this information will be required by the provider
@@ -95,11 +97,53 @@ return {
       -- %p = percentage through file of displayed window
       provider = "%8(%l:%c%) %p%% ",
     }
+
+    local FileNameBlock = {
+      -- let's first set up some attributes needed by this component and its children
+
+      init = function(self) self.filename = vim.api.nvim_buf_get_name(0) end,
+    }
+    -- We can now define some children separately and add them later
+
+    local FileIcon = {
+      init = function(self)
+        local filename = self.filename
+
+        local extension = vim.fn.fnamemodify(filename, ":e")
+        self.icon, self.icon_color =
+          require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+      end,
+      provider = function(self) return self.icon and (self.icon .. " ") end,
+      hl = function(self) return { fg = self.icon_color } end,
+    }
+
+    local FileName = {
+      provider = function(self)
+        -- first, trim the pattern relative to the current directory. For other
+        -- options, see :h filename-modifers
+        local filename = vim.fn.fnamemodify(self.filename, ":t")
+        if filename == "" then return "[No Name]" end
+        -- now, if the filename would occupy more than 1/4th of the available
+        -- space, we trim the file path to its initials
+        -- See Flexible Components section below for dynamic truncation
+        if not conditions.width_percent_below(#filename, 0.25) then filename = vim.fn.pathshorten(filename) end
+        return filename
+      end,
+    }
+    local FileNameModifer = {
+      hl = function()
+        if vim.bo.modified then return { fg = "white", bold = true, force = true } end
+      end,
+    }
+
+    -- let's add the children to our FileNameBlock component
+    FileNameBlock = utils.insert(FileNameBlock, FileIcon, utils.insert(FileNameModifer, FileName), { provider = "%< " })
+
     opts.statusline = {
       hl = { fg = "fg", bg = "bg" },
       status.component.builder(ViMode),
       status.component.git_branch(),
-      status.component.file_info(),
+      status.component.builder(FileNameBlock),
       status.component.git_diff(),
       status.component.diagnostics(),
       status.component.fill(),
