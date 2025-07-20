@@ -10,7 +10,12 @@ return {
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.search.grug-far-nvim" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.golangci-lint" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.editing-support.conform-nvim" },
+  { import = "astrocommunity.editing-support.treesj" },
+  { import = "astrocommunity.lsp.nvim-lint" },
 }
