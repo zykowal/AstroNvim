@@ -36,7 +36,6 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
-        scrolloff = 7, -- sets vim.opt.scrolloff
         smoothscroll = true, -- sets vim.opt.smoothscroll
         expandtab = true, -- sets vim.opt.expandtab
         ignorecase = true, -- sets vim.opt.ignorecase
@@ -46,6 +45,23 @@ return {
         background = "dark", -- sets vim.opt.background
         spelllang = "en", -- sets vim.opt.spelllang
         laststatus = 3, -- sets vim.opt.laststatus
+        autoindent = true,
+        smartindent = true,
+        swapfile = false,
+        backup = false,
+        undofile = true,
+        inccommand = "split",
+        updatetime = 100,
+        timeout = true,
+        timeoutlen = 300,
+        ttimeoutlen = 10,
+        scrolloff = 8,
+        sidescrolloff = 8,
+        mouse = "a",
+        cursorline = true,
+        lazyredraw = true,
+        redrawtime = 1500,
+        synmaxcol = 200,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
