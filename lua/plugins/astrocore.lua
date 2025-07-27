@@ -50,18 +50,8 @@ return {
         swapfile = false,
         backup = false,
         undofile = true,
-        inccommand = "split",
-        updatetime = 100,
-        timeout = true,
-        timeoutlen = 300,
-        ttimeoutlen = 10,
         scrolloff = 8,
         sidescrolloff = 8,
-        mouse = "a",
-        cursorline = true,
-        lazyredraw = true,
-        redrawtime = 1500,
-        synmaxcol = 200,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

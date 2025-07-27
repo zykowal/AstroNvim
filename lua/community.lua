@@ -7,7 +7,7 @@ return {
   { import = "astrocommunity.pack.golangci-lint" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python-ruff" },
-  { import = "astrocommunity.recipes.vscode-icons" },
+  { import = "astrocommunity.pack.svelte" },
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.conform-nvim" },
