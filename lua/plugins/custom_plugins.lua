@@ -83,20 +83,21 @@ return {
     enabled = false,
   },
 
-  {
-    "AstroNvim/astrolsp",
-    opts = {
-      config = {
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              check = { command = "check", extraArgs = {} },
-            },
-          },
-        },
-      },
-    },
-  },
+  -- use cargo check instead of cargo clippy
+  -- {
+  --   "AstroNvim/astrolsp",
+  --   opts = {
+  --     config = {
+  --       rust_analyzer = {
+  --         settings = {
+  --           ["rust-analyzer"] = {
+  --             check = { command = "check", extraArgs = {} },
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 
   {
     "catppuccin/nvim",
@@ -106,6 +107,10 @@ return {
     opts = {
       transparent_background = true,
       term_colors = true,
+      float = {
+        transparent = true,
+        solid = false,
+      },
     },
   },
 

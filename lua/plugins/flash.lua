@@ -2,7 +2,14 @@ return {
   "folke/flash.nvim",
   event = "VeryLazy",
   opts = {
-    modes = { char = { enabled = false } },
+    modes = {
+      search = {
+        enabled = true,
+      },
+      char = {
+        jump_labels = true,
+      },
+    },
   },
   dependencies = {
     {
@@ -10,7 +17,7 @@ return {
       opts = {
         mappings = {
           x = {
-            ["f"] = {
+            ["s"] = {
               function() require("flash").jump() end,
               desc = "Flash",
             },
@@ -18,7 +25,7 @@ return {
               function() require("flash").treesitter_search() end,
               desc = "Treesitter Search",
             },
-            ["F"] = {
+            ["S"] = {
               function() require("flash").treesitter() end,
               desc = "Flash Treesitter",
             },
@@ -32,21 +39,21 @@ return {
               function() require("flash").treesitter_search() end,
               desc = "Treesitter Search",
             },
-            ["f"] = {
+            ["s"] = {
               function() require("flash").jump() end,
               desc = "Flash",
             },
-            ["F"] = {
+            ["S"] = {
               function() require("flash").treesitter() end,
               desc = "Flash Treesitter",
             },
           },
           n = {
-            ["f"] = {
+            ["s"] = {
               function() require("flash").jump() end,
               desc = "Flash",
             },
-            ["F"] = {
+            ["S"] = {
               function() require("flash").treesitter() end,
               desc = "Flash Treesitter",
             },
