@@ -26,4 +26,5 @@ return {
   { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   { import = "astrocommunity.utility.nvim-toggler" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
+  { import = "astrocommunity.lsp.lsp-signature-nvim" },
 }
