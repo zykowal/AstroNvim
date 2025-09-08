@@ -1,10 +1,12 @@
 return {
   "AstroNvim/astrocommunity",
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.typescript-all-in-one" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.go" },
-  { import = "astrocommunity.pack.golangci-lint" },
+  { import = "astrocommunity.pack.sql" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.python-ruff" },
   { import = "astrocommunity.pack.svelte" },
@@ -21,5 +23,7 @@ return {
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
+  { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   { import = "astrocommunity.utility.nvim-toggler" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }

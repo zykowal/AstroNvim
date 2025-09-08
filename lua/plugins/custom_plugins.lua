@@ -1,52 +1,7 @@
 return {
   {
-    "folke/snacks.nvim",
-    opts = {
-      notifier = {
-        timeout = 1000,
-      },
-      picker = {
-        layout = "default",
-        layouts = {
-          default = {
-            layout = {
-              box = "horizontal",
-              width = 0.85,
-              min_width = 120,
-              height = 0.85,
-              {
-                box = "vertical",
-                border = "rounded",
-                title = "{title} {live} {flags}",
-                { win = "input", height = 1, border = "bottom" },
-                { win = "list", border = "none" },
-              },
-              { win = "preview", title = "{preview}", border = "rounded", width = 0.618 },
-            },
-          },
-        },
-      },
-      dashboard = {
-        preset = {
-          header = table.concat({
-            [[                             ,----..          ,----,        ,--,                                                          ,--. ]],
-            [[  ,----..                   /   /   \       .'   .`|      ,--.'|   ,---,                             ,---,              ,--.'| ]],
-            [[ /   /   \           ,--,  /   .     :   .'   .'   ;   ,--,  | :,`--.' |       ,---,         ,--,   '  .' \         ,--,:  : | ]],
-            [[|   :     :        ,'_ /| .   /   ;.  \,---, '    .',---.'|  : '|   :  :      /_ ./|       ,'_ /|  /  ;    '.    ,`--.'`|  ' : ]],
-            [[|   |  ;. /   .--. |  | :.   ;   /  ` ;|   :     ./ |   | : _' |:   |  ',---, |  ' :  .--. |  | : :  :       \   |   :  :  | | ]],
-            [[|   ; /--`  ,'_ /| :  . |;   |  ; \ ; |;   | .'  /  :   : |.'  ||   :  /___/ \.  : |,'_ /| :  . | :  |   /\   \  :   |   \ | : ]],
-            [[|   | ;  __ |  ' | |  . .|   :  | ; | '`---' /  ;   |   ' '  ; :'   '  ;.  \  \ ,' '|  ' | |  . . |  :  ' ;.   : |   : '  '; | ]],
-            [[|   : |.' .'|  | ' |  | |.   |  ' ' ' :  /  ;  /    '   |  .'. ||   |  | \  ;  `  ,'|  | ' |  | | |  |  ;/  \   \'   ' ;.    ; ]],
-            [[|   | '_.' ::  | | :  ' ;'   ;  \; /  | ;  /  /--,  |   | :  | ''   :  ;  \  \    ' :  | | :  ' ; '  :  | \  \ ,'|   | | \   | ]],
-            [[|   ; : \  ||  ; ' |  | ' \   \  ',  / /  /  / .`|  '   : |  : ;|   |  '   '  \   | |  ; ' |  | ' |  |  '  '--'  '   : |  ; .' ]],
-            [[|   | '/  .':  | : ;  ; |  ;   :    /./__;       :  |   | '  ,/ '   :  |    \  ;  ; :  | : ;  ; | |  :  :        |   | '`--'   ]],
-            [[|   :    /  '  :  `--'   \  \   \ .' |   :     .'   ;   : ;--'  ;   |.'      :  \  \'  :  `--'   \|  | ,'        '   : |       ]],
-            [[ \   \ .'   :  ,      .-./   `---`   ;   |  .'      |   ,/      '---'         \  ' ;:  ,      .-./`--''          ;   |.'       ]],
-            [[  `---`      `--`----'               `---'          '---'                      `--`  `--`----'                   '---'         ]],
-          }, "\n"),
-        },
-      },
-    },
+    "folke/which-key.nvim",
+    opts = { preset = "helix" },
   },
 
   {
@@ -66,20 +21,6 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-
-  -- disable debugger
-  {
-    "mfussenegger/nvim-dap",
-    enabled = false,
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    enabled = false,
-  },
-  {
-    "leoluz/nvim-dap-go",
     enabled = false,
   },
 
