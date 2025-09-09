@@ -16,7 +16,6 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.editing-support.conform-nvim" },
-  { import = "astrocommunity.editing-support.treesj" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.mini-ai" },
   { import = "astrocommunity.quickfix.nvim-bqf" },

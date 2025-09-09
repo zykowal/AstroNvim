@@ -7,7 +7,7 @@ return {
         n = {
           ["<Leader>e"] = { function() require("snacks").picker.explorer() end, desc = "Explorer" },
           ["<leader>."] = { function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer" },
-          ["<leader>fS"] = { function() require("snacks").scratch.select() end, desc = "Select Scratch Buffer" },
+          ["<leader>f."] = { function() require("snacks").scratch.select() end, desc = "Select Scratch Buffer" },
         },
       },
     },
@@ -15,6 +15,12 @@ return {
   opts = {
     explorer = {
       enabled = true,
+    },
+    styles = {
+      scratch = {
+        width = 0.75,
+        height = 0.75,
+      },
     },
     zen = {
       toggles = {
