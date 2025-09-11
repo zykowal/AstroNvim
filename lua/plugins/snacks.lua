@@ -5,7 +5,6 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>e"] = { function() require("snacks").picker.explorer() end, desc = "Explorer" },
           ["<leader>."] = { function() require("snacks").scratch() end, desc = "Toggle Scratch Buffer" },
           ["<leader>f."] = { function() require("snacks").scratch.select() end, desc = "Select Scratch Buffer" },
         },
@@ -13,9 +12,6 @@ return {
     },
   },
   opts = {
-    explorer = {
-      enabled = true,
-    },
     styles = {
       scratch = {
         width = 0.75,
@@ -31,11 +27,8 @@ return {
         inlay_hints = true,
       },
       win = {
-        min_width = 140,
+        min_width = 120,
         wo = {
-          relativenumber = true,
-          number = true,
-          spell = false,
           signcolumn = "no",
         },
       },
@@ -58,13 +51,6 @@ return {
             },
             { win = "preview", title = "{preview}", border = "rounded", width = 0.618 },
           },
-        },
-      },
-      sources = {
-        explorer = {
-          auto_close = true,
-          jump = { close = true },
-          layout = { preset = "ivy", layout = { position = "top" } },
         },
       },
     },
