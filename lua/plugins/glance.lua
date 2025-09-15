@@ -20,7 +20,7 @@ return {
     local glance = require "glance"
     local actions = glance.actions
     return {
-      height = 20,
+      height = 25,
       border = {
         enable = true,
       },
