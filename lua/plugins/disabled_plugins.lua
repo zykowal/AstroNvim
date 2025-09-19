@@ -3,6 +3,10 @@ return {
     "folke/which-key.nvim",
     opts = { preset = "helix" },
   },
+  {
+    "NMAC427/guess-indent.nvim",
+    enabled = false,
+  },
 
   {
     "s1n7ax/nvim-window-picker",
