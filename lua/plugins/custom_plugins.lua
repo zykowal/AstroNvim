@@ -3,6 +3,7 @@ return {
     "folke/which-key.nvim",
     opts = { preset = "helix" },
   },
+
   {
     "NMAC427/guess-indent.nvim",
     enabled = false,
