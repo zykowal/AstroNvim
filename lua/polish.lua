@@ -22,3 +22,25 @@ vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Show references" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Show declaration" })
 vim.keymap.set("n", "gh", function() vim.lsp.buf.typehierarchy "subtypes" end, { desc = "Show subtypes" })
 vim.keymap.set("n", "gH", function() vim.lsp.buf.typehierarchy "supertypes" end, { desc = "Show supertypes" })
+
+local function set_cursor_color()
+  vim.opt.guicursor = {
+    "n-v-c:block-Cursor/lCursor",
+    "i-ci-ve:block-CursorInsert/lCursorInsert",
+    "r-cr:block-CursorReplace/lCursorReplace",
+    "o:block-CursorOther/lCursorOther",
+    "sm:block-CursorSearch/lCursorSearch",
+  }
+
+  vim.api.nvim_set_hl(0, "Cursor", { bg = "#61AFEF" })
+  vim.api.nvim_set_hl(0, "CursorInsert", { bg = "#E5C07B" })
+  vim.api.nvim_set_hl(0, "CursorReplace", { bg = "#E06C75" })
+  vim.api.nvim_set_hl(0, "CursorOther", { bg = "#C678DD" })
+  vim.api.nvim_set_hl(0, "CursorSearch", { bg = "#FF00FF" })
+end
+
+set_cursor_color()
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = set_cursor_color,
+})

@@ -1,6 +1,9 @@
 return {
   "Saghen/blink.cmp",
   opts = {
+    keymap = {
+      ["<C-l>"] = { "accept", "fallback" },
+    },
     cmdline = {
       keymap = {
         ["<Tab>"] = { "show", "accept" },
