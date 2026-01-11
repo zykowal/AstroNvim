@@ -18,3 +18,12 @@ vim.keymap.del("n", "gri", { silent = true })
 vim.keymap.del("n", "grn", { silent = true })
 vim.keymap.del("n", "grr", { silent = true })
 vim.keymap.del("n", "grt", { silent = true })
+
+-- gitsigns
+vim.keymap.set("n", "<leader>gB", "<Cmd>Gitsigns blame<CR>", { desc = "View Full Git blame" })
+vim.keymap.set(
+  "n",
+  "<leader>gT",
+  function() require("gitsigns").toggle_current_line_blame() end,
+  { desc = "Toggle Git line blame" }
+)
