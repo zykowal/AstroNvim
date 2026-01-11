@@ -7,4 +7,5 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.mini-ai" },
+  { import = "astrocommunity.completion.supermaven-nvim" },
 }
