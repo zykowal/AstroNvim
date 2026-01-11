@@ -1,6 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
-  event = "VeryLazy",
+  event = "User AstroFile",
   cmd = "FzfLua",
   init = function() require("fzf-lua").register_ui_select() end,
   specs = {
