@@ -117,7 +117,17 @@ return {
         maps.n["<Leader>fL"] = { function() require("fzf-lua").loclist_stack() end, desc = "Find loclist stack" }
         maps.n["<Leader>fg"] = { function() require("fzf-lua").git_files() end, desc = "Search git files" }
         maps.n["<Leader>f/"] = { function() require("fzf-lua").search_history() end, desc = "Search history" }
-        maps.n["z="] = { function() require("fzf-lua").spell_suggest() end, desc = "Spell suggest" }
+        maps.n["z="] = {
+          function()
+            require("fzf-lua").spell_suggest {
+              winopts = {
+                border = "rounded",
+              },
+            }
+          end,
+          desc = "Spell suggest",
+        }
+        maps.n["<leader>fz"] = { function() require("fzf-lua").zoxide() end, desc = "Find zoxide" }
       end,
     },
   },
