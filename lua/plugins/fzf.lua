@@ -54,6 +54,7 @@ return {
         maps.n["<Leader>fc"] = { function() require("fzf-lua").grep_cword() end, desc = "Find word under cursor" }
         maps.n["<Leader>fC"] = { function() require("fzf-lua").commands() end, desc = "Find commands" }
         maps.n["<Leader>ff"] = { function() require("fzf-lua").files() end, desc = "Find files" }
+        maps.n["<Leader><Leader>"] = { function() require("fzf-lua").files() end, desc = "Find files" }
         maps.n["<Leader>fh"] = { function() require("fzf-lua").helptags() end, desc = "Find help" }
         maps.n["<Leader>fk"] = {
           function()
