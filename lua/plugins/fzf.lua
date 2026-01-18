@@ -80,7 +80,7 @@ return {
         maps.n["<Leader>ls"] = { function() require("fzf-lua").lsp_document_symbols() end, desc = "Search symbols" }
         maps.n["<Leader>lS"] =
         { function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "Search workspace symbols" }
-        maps.n["gp"] = { function() require("fzf-lua").lsp_finder() end, desc = "Lsp finder" }
+        maps.n["gP"] = { function() require("fzf-lua").lsp_finder() end, desc = "Lsp finder" }
         maps.n["gh"] = { function() require("fzf-lua").lsp_type_sub() end, desc = "Show subtypes" }
         maps.n["gH"] = { function() require("fzf-lua").lsp_type_super() end, desc = "Show supertypes" }
         maps.n["gr"] = { function() require("fzf-lua").lsp_references() end, desc = "Search references" }

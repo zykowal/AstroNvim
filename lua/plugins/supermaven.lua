@@ -4,7 +4,7 @@ return {
   opts = {
     keymaps = {
       accept_suggestion = "<C-l>",
-      accept_word = "<C-w>",
+      accept_word = "<C-k>",
     },
     log_level = "warn",
     disable_inline_completion = false, -- disables inline completion for use with cmp
