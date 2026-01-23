@@ -1,5 +1,9 @@
 return {
   {
+    "akinsho/toggleterm.nvim",
+    enabled = false,
+  },
+  {
     "folke/snacks.nvim",
     enabled = false,
   },
