@@ -1,5 +1,9 @@
 return {
   {
+    "RRethy/vim-illuminate",
+    enabled = false,
+  },
+  {
     "akinsho/toggleterm.nvim",
     enabled = false,
   },
