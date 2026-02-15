@@ -4,7 +4,11 @@ return {
     enabled = false,
   },
   {
-    "akinsho/toggleterm.nvim",
+    "leoluz/nvim-dap-go",
+    enabled = false,
+  },
+  {
+    "Civitasv/cmake-tools.nvim",
     enabled = false,
   },
   {

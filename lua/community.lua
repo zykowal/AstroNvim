@@ -7,5 +7,11 @@ return {
   { import = "astrocommunity.recipes.disable-tabline" },
   { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.mini-ai" },
-  { import = "astrocommunity.recipes.vscode-icons" },
+  { import = "astrocommunity.search.grug-far-nvim" },
+  { import = "astrocommunity.pack.rust" },
+  { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }
