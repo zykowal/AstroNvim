@@ -20,7 +20,7 @@ return {
         opts = {
           mappings = {
             n = {
-              ["<Leader>go"] = {
+              ["<Leader>gO"] = {
                 "<CMD>DiffviewOpen<CR>",
                 desc = "DiffviewOpen",
               },
@@ -37,20 +37,5 @@ return {
         },
       },
     },
-  },
-  {
-    "linrongbin16/gitlinker.nvim",
-    event = "BufRead",
-    dependencies = {
-      "AstroNvim/astrocore",
-      opts = function(_, opts)
-        local prefix = "<Leader>g"
-        opts.mappings.n[prefix .. "y"] = { "<Cmd>GitLink<CR>", desc = "Git link copy" }
-        opts.mappings.n[prefix .. "O"] = { "<Cmd>GitLink!<CR>", desc = "Git link open" }
-        opts.mappings.v[prefix .. "y"] = { "<Cmd>GitLink<CR>", desc = "Git link copy" }
-        opts.mappings.v[prefix .. "O"] = { "<Cmd>GitLink!<CR>", desc = "Git link open" }
-      end,
-    },
-    opts = {},
   },
 }

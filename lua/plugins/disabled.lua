@@ -1,5 +1,9 @@
 return {
   {
+    "akinsho/toggleterm.nvim",
+    enabled = false,
+  },
+  {
     "RRethy/vim-illuminate",
     enabled = false,
   },
@@ -9,10 +13,6 @@ return {
   },
   {
     "Civitasv/cmake-tools.nvim",
-    enabled = false,
-  },
-  {
-    "folke/snacks.nvim",
     enabled = false,
   },
   {
