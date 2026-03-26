@@ -44,10 +44,6 @@ return {
     enabled = false,
   },
   {
-    "mrjones2014/smart-splits.nvim",
-    enabled = false,
-  },
-  {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = false,
   },

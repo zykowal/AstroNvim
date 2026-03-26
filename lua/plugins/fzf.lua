@@ -1,8 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
-  event = "User AstroFile",
+  event = "VeryLazy",
   cmd = "FzfLua",
-  init = function() require("fzf-lua").register_ui_select() end,
   specs = {
     { "stevearc/dressing.nvim", optional = true, opts = { select = { backend = { "fzf_lua" } } } },
     {
@@ -28,6 +27,7 @@ return {
     {
       "AstroNvim/astrocore",
       opts = function(_, opts)
+        require("fzf-lua").register_ui_select()
         local maps = opts.mappings
         maps.n["<Leader>f"] = vim.tbl_get(opts, "_map_sections", "f")
         maps.n["<Leader>g"] = vim.tbl_get(opts, "_map_sections", "g")
@@ -43,8 +43,8 @@ return {
         maps.n["<Leader>f<CR>"] = { function() require("fzf-lua").resume() end, desc = "Resume previous search" }
         maps.n["<Leader>f'"] = { function() require("fzf-lua").marks() end, desc = "Find marks" }
         maps.n["<Leader>/"] = {
-          function() require("fzf-lua").blines { winopts = { preview = { hidden = true } } } end,
-          desc = "Find words in current buffer",
+          function() require("fzf-lua").grep_curbuf() end,
+          desc = "Find in current buffer",
         }
         maps.n["<Leader>fa"] = {
           function() require("fzf-lua").files { prompt = "Config> ", cwd = vim.fn.stdpath "config" } end,
@@ -61,30 +61,31 @@ return {
             require("fzf-lua").keymaps {
               winopts = {
                 preview = {
-                  scrollbar = false,
                   layout = "horizontal",
                   horizontal = "right:62%",
-                  vertical = "down:62%",
                 },
               },
             }
           end,
           desc = "Find keymaps",
         }
-        maps.n["<Leader>fm"] = { function() require("fzf-lua").marks() end, desc = "Find man" }
+        maps.n["<Leader>fn"] = { "<cmd>NoiceFzf<CR>", desc = "Find Messages" }
+        maps.n["<Leader>fm"] = { function() require("fzf-lua").marks() end, desc = "Find marks" }
         maps.n["<Leader>fM"] = { function() require("fzf-lua").manpages() end, desc = "Find man" }
         maps.n["<Leader>fo"] = { function() require("fzf-lua").oldfiles() end, desc = "Find history" }
         maps.n["<Leader>fr"] = { function() require("fzf-lua").registers() end, desc = "Find registers" }
+        maps.n['<Leader>f"'] = { function() require("fzf-lua").registers() end, desc = "Find registers" }
         maps.n["<Leader>fT"] = { function() require("fzf-lua").colorschemes() end, desc = "Find themes" }
         maps.n["<Leader>fw"] = { function() require("fzf-lua").live_grep_native() end, desc = "Find words" }
         maps.n["<Leader>ls"] = { function() require("fzf-lua").lsp_document_symbols() end, desc = "Search symbols" }
         maps.n["<Leader>lS"] =
         { function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "Search workspace symbols" }
-        maps.n["gp"] = { function() require("fzf-lua").lsp_finder() end, desc = "Lsp finder" }
+        maps.n["gP"] = { function() require("fzf-lua").lsp_finder() end, desc = "Lsp finder" }
         maps.n["gh"] = { function() require("fzf-lua").lsp_type_sub() end, desc = "Show subtypes" }
         maps.n["gH"] = { function() require("fzf-lua").lsp_type_super() end, desc = "Show supertypes" }
         maps.n["gr"] = { function() require("fzf-lua").lsp_references() end, desc = "Search references" }
         maps.n["gD"] = { function() require("fzf-lua").lsp_declarations() end, desc = "Search declarations" }
+        maps.n["gI"] = { function() require("fzf-lua").lsp_implementations() end, desc = "Search declarations" }
         maps.n["<Leader>:"] = { function() require("fzf-lua").command_history() end, desc = "Command history" }
         maps.n["<Leader>,"] = { function() require("fzf-lua").live_grep_native() end, desc = "Find words" }
         maps.n["<Leader>."] = { function() require("fzf-lua").buffers() end, desc = "Find buffers" }
@@ -116,13 +117,14 @@ return {
         maps.n["<Leader>fQ"] = { function() require("fzf-lua").quickfix_stack() end, desc = "Find quickfix stack" }
         maps.n["<Leader>fl"] = { function() require("fzf-lua").loclist() end, desc = "Find loclist" }
         maps.n["<Leader>fL"] = { function() require("fzf-lua").loclist_stack() end, desc = "Find loclist stack" }
-        maps.n["<Leader>fg"] = { function() require("fzf-lua").git_files() end, desc = "Search git files" }
+        maps.n["<Leader>fg"] = { function() require("fzf-lua").vcs_files() end, desc = "Search git files" }
         maps.n["<Leader>f/"] = { function() require("fzf-lua").search_history() end, desc = "Search history" }
         maps.n["z="] = {
           function()
             require("fzf-lua").spell_suggest {
               winopts = {
                 border = "rounded",
+                fullscreen = false,
               },
             }
           end,
@@ -134,23 +136,74 @@ return {
   },
   opts = {
     {
-      "max-perf",
+      "fzf-native",
       "border-fused",
       "hide",
     },
+    lsp = {
+      symbols = {
+        symbol_icons = {
+          Array = "",
+          Boolean = "󰨙",
+          Class = "󰯳",
+          Color = "󰰠",
+          Control = "",
+          Collapsed = ">",
+          Constant = "󰯱",
+          Constructor = "",
+          Enum = "󰯹",
+          EnumMember = "",
+          Event = "",
+          Field = "",
+          File = "",
+          Folder = "",
+          Function = "󰡱",
+          Interface = "󰰅",
+          Key = "",
+          Keyword = "󱕴",
+          Method = "󰰑",
+          Module = "󰆼",
+          Namespace = "󰰔",
+          Null = "",
+          Number = "󰰔",
+          Object = "󰲟",
+          Operator = "",
+          Package = "󰰚",
+          Property = "󰲽",
+          Reference = "󰰠",
+          Snippet = "",
+          String = "",
+          Struct = "󰰣",
+          Text = "󱜥",
+          TypeParameter = "󰰦",
+          Unit = "󱜥",
+          Value = "",
+          Variable = "󰫧",
+        },
+      },
+    },
     winopts = {
-      height = 0.48,
+      fullscreen = true,
+      height = 1,
       width = 1,
       row = 1,
       col = 0,
       border = "border-top",
       title_pos = "left",
+      treesitter = false,
       preview = {
+        hidden = true,
         scrollbar = false,
-        layout = "flex",
-        horizontal = "right:62%",
-        vertical = "down:62%",
+        layout = "horizontal",
+        horizontal = "up:62%",
       },
+    },
+    defaults = {
+      git_icons = true,
+      file_icons = false,
+    },
+    fzf_opts = {
+      ["--layout"] = "default",
     },
     keymap = {
       builtin = {
@@ -170,9 +223,13 @@ return {
       },
     },
     fzf_colors = {
-      true,          -- auto generate rest of fzf’s highlights?
+      true,
       bg = "-1",
-      gutter = "-1", -- I like this one too, try with and without
+      gutter = "-1",
     },
   },
+  config = function(_, opts)
+    require("fzf-lua").setup(opts)
+    require("fzf-lua").register_ui_select()
+  end,
 }
