@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  event = "BufReadPost",
   dependencies = { "MunifTanjim/nui.nvim" },
   opts = function(_, opts)
     local utils = require "astrocore"

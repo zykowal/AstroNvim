@@ -1,6 +1,18 @@
 return {
   {
+    "brenoprata10/nvim-highlight-colors",
+    enabled = false,
+  },
+  {
+    "rafamadriz/friendly-snippets",
+    enabled = false,
+  },
+  {
     "RRethy/vim-illuminate",
+    enabled = false,
+  },
+  {
+    "akinsho/toggleterm.nvim",
     enabled = false,
   },
   {

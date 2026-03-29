@@ -75,6 +75,7 @@ return {
         foldlevel = 99,
         foldlevelstart = 99,
         winborder = "rounded",
+        tags = "tags;.git/tags;./tags",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

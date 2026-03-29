@@ -1,6 +1,5 @@
 return {
   "ibhagwan/fzf-lua",
-  event = "VeryLazy",
   cmd = "FzfLua",
   specs = {
     { "stevearc/dressing.nvim", optional = true, opts = { select = { backend = { "fzf_lua" } } } },
@@ -12,7 +11,25 @@ return {
           local maps = opts.mappings
           maps.n["<Leader>lD"] =
           { function() require("fzf-lua").diagnostics_workspace() end, desc = "Search diagnostics" }
-          if maps.n.gd then maps.n.gd[1] = function() require("fzf-lua").lsp_definitions { jump1 = true } end end
+          if maps.n.gd then
+            maps.n.gd[1] = function()
+              -- If you want to use ctags, uncomment the following lines
+              -- local word = vim.fn.expand "<cword>"
+              -- local before = vim.api.nvim_win_get_cursor(0)
+              --
+              -- local ok = pcall(vim.cmd, "silent tag " .. word)
+              -- local after = vim.api.nvim_win_get_cursor(0)
+              --
+              -- if ok and (before[1] ~= after[1] or before[2] ~= after[2]) then
+              --   local line = vim.api.nvim_get_current_line()
+              --   local start_col = string.find(line, "%f[%w]" .. word .. "%f[%W]")
+              --
+              --   if start_col then vim.api.nvim_win_set_cursor(0, { after[1], start_col - 1 }) end
+              --   return
+              -- end
+              require("fzf-lua").lsp_definitions { jump1 = true }
+            end
+          end
           if maps.n.gI then maps.n.gI[1] = function() require("fzf-lua").lsp_implementations() end end
           if maps.n["<Leader>lR"] then maps.n["<Leader>lR"][1] = function() require("fzf-lua").lsp_references() end end
           if maps.n.gy then maps.n.gy[1] = function() require("fzf-lua").lsp_typedefs() end end
@@ -27,13 +44,14 @@ return {
     {
       "AstroNvim/astrocore",
       opts = function(_, opts)
-        require("fzf-lua").register_ui_select()
         local maps = opts.mappings
         maps.n["<Leader>f"] = vim.tbl_get(opts, "_map_sections", "f")
         maps.n["<Leader>g"] = vim.tbl_get(opts, "_map_sections", "g")
         maps.n["<Leader>gb"] = { function() require("fzf-lua").git_branches() end, desc = "Git branches" }
         maps.n["<Leader>gc"] = { function() require("fzf-lua").git_commits() end, desc = "Git commits (repository)" }
         maps.n["<Leader>gC"] = { function() require("fzf-lua").git_bcommits() end, desc = "Git commits (current file)" }
+        maps.n["<Leader>gD"] = { function() require("fzf-lua").git_diff() end, desc = "Git Diff" }
+        maps.n["<Leader>gh"] = { function() require("fzf-lua").git_hunks() end, desc = "Git Hunks" }
         maps.n["<Leader>gt"] = { function() require("fzf-lua").git_status() end, desc = "Git status" }
         maps.n["<Leader>gw"] = { function() require("fzf-lua").git_worktrees() end, desc = "Git worktrees" }
         maps.n["<Leader>gA"] = { function() require("fzf-lua").git_stash() end, desc = "Git stash" }
@@ -76,7 +94,7 @@ return {
         maps.n["<Leader>fr"] = { function() require("fzf-lua").registers() end, desc = "Find registers" }
         maps.n['<Leader>f"'] = { function() require("fzf-lua").registers() end, desc = "Find registers" }
         maps.n["<Leader>fT"] = { function() require("fzf-lua").colorschemes() end, desc = "Find themes" }
-        maps.n["<Leader>fw"] = { function() require("fzf-lua").live_grep_native() end, desc = "Find words" }
+        maps.n["<Leader>fw"] = { function() require("fzf-lua").grep_project() end, desc = "Find words" }
         maps.n["<Leader>ls"] = { function() require("fzf-lua").lsp_document_symbols() end, desc = "Search symbols" }
         maps.n["<Leader>lS"] =
         { function() require("fzf-lua").lsp_live_workspace_symbols() end, desc = "Search workspace symbols" }
@@ -115,8 +133,9 @@ return {
         maps.n["<Leader>la"] = { function() require("fzf-lua").lsp_code_actions() end, desc = "Code actions" }
         maps.n["<Leader>fq"] = { function() require("fzf-lua").quickfix() end, desc = "Find quickfix" }
         maps.n["<Leader>fQ"] = { function() require("fzf-lua").quickfix_stack() end, desc = "Find quickfix stack" }
-        maps.n["<Leader>fl"] = { function() require("fzf-lua").loclist() end, desc = "Find loclist" }
-        maps.n["<Leader>fL"] = { function() require("fzf-lua").loclist_stack() end, desc = "Find loclist stack" }
+        maps.n["<Leader>fl"] = { function() require("fzf-lua").tags_live_grep() end, desc = "Find tags" }
+        maps.v["<Leader>fl"] = { function() require("fzf-lua").tags_grep_visual() end, desc = "Find tags" }
+        maps.n["<Leader>fL"] = { function() require("fzf-lua").grep() end, desc = "Grep Pattern" }
         maps.n["<Leader>fg"] = { function() require("fzf-lua").vcs_files() end, desc = "Search git files" }
         maps.n["<Leader>f/"] = { function() require("fzf-lua").search_history() end, desc = "Search history" }
         maps.n["z="] = {
@@ -199,8 +218,18 @@ return {
       },
     },
     defaults = {
-      git_icons = true,
+      git_icons = false,
       file_icons = false,
+    },
+    git = {
+      hunks = {
+        fzf_opts = {
+          ["--layout"] = "reverse-list",
+          ["--multi"] = true,
+          ["--delimiter"] = ":",
+          ["--nth"] = "3..",
+        },
+      },
     },
     fzf_opts = {
       ["--layout"] = "default",
