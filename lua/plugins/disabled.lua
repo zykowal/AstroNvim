@@ -1,5 +1,9 @@
 return {
   {
+    "windwp/nvim-ts-autotag",
+    enabled = false,
+  },
+  {
     "brenoprata10/nvim-highlight-colors",
     enabled = false,
   },
