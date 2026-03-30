@@ -27,16 +27,3 @@ vim.keymap.set(
   function() require("gitsigns").toggle_current_line_blame() end,
   { desc = "Toggle Git line blame" }
 )
-
--- lazygit
-vim.keymap.set("n", "<leader>gg", function()
-  vim.cmd "terminal lazygit"
-  vim.cmd "startinsert"
-  vim.api.nvim_create_autocmd("TermClose", {
-    buffer = 0,
-    callback = function()
-      vim.schedule(function() vim.cmd "bdelete!" end)
-    end,
-    once = true,
-  })
-end, { desc = "Open LazyGit" })
