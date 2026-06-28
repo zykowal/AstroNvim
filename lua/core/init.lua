@@ -1,0 +1,6 @@
+require("core.session").setup()
+require("core.terminal").setup()
+require("core.center").setup()
+require("core.statusline").setup()
+require("core.jumpchar").setup()
+require("core.marks").setup()
